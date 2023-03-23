@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BMI Kalkulator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Paragraff -->
+    <div class="kalkulator">
+      <h2>Kalkulator BMI</h2>
+      <p>
+        Berat badan ideal adalah impian semua orang. Tidak hanya memiliki bentuk
+        tubuh yang menunjang penampilan, berat badan ideal juga menandakan
+        kondisi tubuh yang sehat. Bagaimana denganmu? Yuk, hitung sekarang di
+        kalkulator BMI.
+      </p>
+      <!-- End -->
+      <div class="card">
+        <!-- Form 1 Jenis Kelamin -->
+        <form id="" name="" class="form">
+          <p>Jenis Kelamin</p>
+          <input
+            type="radio"
+            name="jenis-kelamin"
+            value="l"
+            required="true"
+            id="pria"
+          />
+          <label for="pria">Pria</label>
+          <input
+            type="radio"
+            name="jenis-kelamin"
+            value="p"
+            required="true"
+            id="wanita"
+          />
+          <label for="wanita">Wanita</label>
+
+          <!-- End -->
+          <div class="form-group">
+            <!-- Berat badan -->
+            <div class="berat-badan">
+              <label for="berat-badan">Berat Badan (Kg)</label>
+              <input
+                type="text"
+                name="berat-badan"
+                placeholder="Input Berat Badan"
+                required="true"
+              />
+            </div>
+            <!-- End -->
+            <!-- Usia -->
+            <div class="Usia">
+              <label for="Usia">Usia (Tahun)</label>
+              <input
+                type="text"
+                name="Usia"
+                placeholder="Input Usia"
+                required="true"
+              />
+            </div>
+            <!-- End -->
+            <!-- Tinggi Badan -->
+            <div class="tinggi-badan">
+              <label for="tinggi-badan">Tinggi Badan (cm) </label>
+              <input
+                type="text"
+                name="tinggi-badan"
+                placeholder="Input Tinggi Badan"
+                required="true"
+              />
+            </div>
+            <!-- End -->
+            <div class="buttom-group">
+              <button id="hitung" type="submit" class="botton">
+                Hitung BM
+              </button>
+              <button id="reset" class="reset">Reset</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="footer">
+        <p>
+          Keunggulan fitur <br />1. Menghitung berat badan <br />2. Menentukan
+          kategori berat badan ideal atau tidak <br />3. Mempersiapkan program
+          penurunan berat badan <br /><br /><br />&nbsp;Kalkulator ini hanya
+          boleh digunakan oleh orang dewasa (wanita hamil atau menyusui tidak
+          boleh mengandalkan pembacaan BMI ini) dan tidak ada tindakan yang
+          harus diambil berdasarkan nilainya selain berkonsultasi dengan orang
+          yang memenuhi syarat seperti dokter. <br /><br />&nbsp;Kalkulator akan
+          memberi Anda gambaran tentang perbandingan berat badan Anda dengan
+          nilai umum. Indeks Massa Tubuh (atau BMI) dihitung sebagai berat badan
+          Anda (dalam kilogram) dibagi dengan kuadrat tinggi badan Anda (dalam
+          meter) atau BMI-Kg/M².
+        </p>
+      </div>
+    </div>
+
+    <script>
+      // mengambil elemen form dan membuat elemen untuk menampilkan hasil
+      const form = document.querySelector(".form");
+      const hasil = document.createElement("div");
+      hasil.classList.add("hasil");
+
+      // menambahkan event listener pada form ketika tombol submit ditekan
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        // mengambil nilai berat badan, tinggi badan, usia, dan jenis kelamin dari form
+        const beratBadan = parseFloat(form.elements["berat-badan"].value);
+        const tinggiBadan =
+          parseFloat(form.elements["tinggi-badan"].value) / 100;
+        const usia = parseFloat(form.elements["Usia"].value);
+        const jenisKelamin = form.elements["jenis-kelamin"].value;
+
+        // Menghitung BMI dengan rumus berat badan (kg) / tinggi badan (m)^2
+        const bmi = beratBadan / (tinggiBadan * tinggiBadan);
+
+        // menentukan kategori BMI berdasarkan nilai BMI yang dihasilkan
+        let keterangan = "";
+
+        if (bmi < 18.5) {
+          keterangan = "Kekurangan berat badan";
+        } else if (bmi < 25) {
+          keterangan = "berat badan normal/Ideal ";
+        } else if (bmi < 30) {
+          keterangan = "berat badan berlebih";
+        } else {
+          keterangan = "(Gendut)/obesitas";
+        }
+
+        const hasilText = `BMI: ${bmi.toFixed(2)} (${keterangan})`;
+
+        hasil.textContent = hasilText;
+        form.appendChild(hasil);
+
+        // Menampilkan hasil selama 5 detik
+        setTimeout(() => {
+          hasil.remove();
+        }, 5000);
+      });
+
+      const resetButton = document.querySelector("#reset");
+      resetButton.addEventListener("click", function () {
+        form.reset();
+        hasil.remove();
+      });
+    </script>
+  </body>
+</html>

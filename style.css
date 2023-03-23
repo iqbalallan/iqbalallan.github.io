@@ -1,0 +1,155 @@
+/* Global styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: #f5f5f5;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+p {
+  font-size: 1rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.kalkulator {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Form styles */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form input[type="text"] {
+  font-size: 1rem;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.form input[type="text"]:focus {
+  outline: none;
+  border-color: #0056b3;
+}
+
+.form-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.buttom-group {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.botton {
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  background-color: #0056b3;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.botton:hover {
+  background-color: #004080;
+}
+
+.reset {
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  background-color: #ff5e5e;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.reset:hover {
+  background-color: #ff3f3f;
+}
+
+/* Footer styles */
+.footer {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  text-align: justify;
+}
+
+.footer p {
+  line-height: 1.5;
+}
+
+.footer br {
+  display: none;
+}
+
+.footer br + br {
+  display: block;
+  margin-top: 1rem;
+}
+
+.footer a {
+  color: #0056b3;
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+/* CSS untuk pilihan jenis kelamin */
+input[type="radio"] {
+  display: none;
+}
+
+/* Mengubah warna latar belakang dan border ketika pilihan dihover */
+input[type="radio"] + label:hover {
+  background-color: #f2f2f2;
+  border: 2px solid #4b9cdb;
+}
+
+/* Mengubah warna latar belakang dan border ketika pilihan terpilih */
+input[type="radio"]:checked + label {
+  background-color: #4b9cdb;
+  color: #fff;
+  border: 2px solid #4b9cdb;
+}
+
+/* Menambahkan padding dan border radius pada label */
+label[for="kelamin"] {
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Menambahkan efek transisi ketika pilihan dipilih */
+input[type="radio"] + label {
+  transition: all 0.3s ease;
+}
